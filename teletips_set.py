@@ -202,8 +202,8 @@ async def stop_timer(Client, message):
         if (await bot.get_chat_member(message.chat.id,message.from_user.id)).can_manage_chat:
             stoptimer = True
             await message.reply('🛑 Countdown stopped.')
-        else:
-            await message.reply('👮🏻‍♂️ Sorry, **only admins** can execute this command.')
+        #else:
+         #   await message.reply('👮🏻‍♂️ Sorry, **only admins** can execute this command.')
     except FloodWait as e:
         await asyncio.sleep(e.x)
 
