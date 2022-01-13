@@ -21,7 +21,6 @@ bot=Client(
 
 stoptimer = False
 
-#kkk
 TELETIPS_MAIN_MENU_BUTTONS = [
             [
                 InlineKeyboardButton('❓ HELP', callback_data="HELP_CALLBACK")
@@ -124,19 +123,18 @@ async def callback_query(client: Client, query: CallbackQuery):
             )
         except MessageNotModified:
             pass    
+
 @bot.on_message(filters.command('set'))
 async def set_timer(client, message):
-    print("Entered")
     global stoptimer
     try:
         if message.chat.id>0:
             return await message.reply('⛔️ Try this command in a **group chat**.')
-           
-        """elif len(message.command)<3:
+        #elif not (await client.get_chat_member(message.chat.id,message.from_user.id)).can_manage_chat:
+         #   return await message.reply('👮🏻‍♂️ Sorry, **only admins** can execute this command.')    
+        elif len(message.command)<3:
             return await message.reply('❌ **Incorrect format.**\n\n✅ Format should be like,\n<code> /set seconds "event"</code>\n\n**Example**:\n <code>/set 86400 "TIME LEFT UNTIL NEW YEAR"</code>')    
         else:
-            return await message.reply('❌ **Incorrect format.**\n\n✅ Format should be like,\n<code> /set seconds "event"</code>\n\n**Example**:\n <code>/set 86400 "TIME LEFT UNTIL NEW YEAR"</code>')    
-
             user_input_time = int(message.command[1])
             user_input_event = str(message.command[2])
             get_user_input_time = await bot.send_message(message.chat.id, user_input_time)
@@ -190,9 +188,10 @@ async def set_timer(client, message):
                 await finish_countdown.edit("🚨 Beep! Beep!! **TIME'S UP!!!**")
             else:
                 await get_user_input_time.edit(f"🤷🏻‍♂️ I can't countdown from {user_input_time}")
-                await get_user_input_time.unpin()"""
+                await get_user_input_time.unpin()
     except FloodWait as e:
         await asyncio.sleep(e.x)
+
 @bot.on_message(filters.command('stopc'))
 async def stop_timer(Client, message):
     global stoptimer
@@ -200,8 +199,8 @@ async def stop_timer(Client, message):
         if (await bot.get_chat_member(message.chat.id,message.from_user.id)).can_manage_chat:
             stoptimer = True
             await message.reply('🛑 Countdown stopped.')
-        #else:
-         #   await message.reply('👮🏻‍♂️ Sorry, **only admins** can execute this command.')
+        else:
+            await message.reply('👮🏻‍♂️ Sorry, **only admins** can execute this command.')
     except FloodWait as e:
         await asyncio.sleep(e.x)
 
