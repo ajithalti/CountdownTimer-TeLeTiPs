@@ -21,6 +21,7 @@ bot=Client(
 
 stoptimer = False
 
+#kkk
 TELETIPS_MAIN_MENU_BUTTONS = [
             [
                 InlineKeyboardButton('❓ HELP', callback_data="HELP_CALLBACK")
