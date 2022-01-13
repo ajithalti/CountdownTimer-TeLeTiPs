@@ -124,7 +124,6 @@ async def callback_query(client: Client, query: CallbackQuery):
             )
         except MessageNotModified:
             pass    
-
 @bot.on_message(filters.command('set'))
 async def set_timer(client, message):
     print("Entered")
@@ -133,7 +132,7 @@ async def set_timer(client, message):
         if message.chat.id>0:
             return await message.reply('⛔️ Try this command in a **group chat**.')
            
-        elif len(message.command)<3:
+        """elif len(message.command)<3:
             return await message.reply('❌ **Incorrect format.**\n\n✅ Format should be like,\n<code> /set seconds "event"</code>\n\n**Example**:\n <code>/set 86400 "TIME LEFT UNTIL NEW YEAR"</code>')    
         else:
             return await message.reply('❌ **Incorrect format.**\n\n✅ Format should be like,\n<code> /set seconds "event"</code>\n\n**Example**:\n <code>/set 86400 "TIME LEFT UNTIL NEW YEAR"</code>')    
@@ -191,10 +190,9 @@ async def set_timer(client, message):
                 await finish_countdown.edit("🚨 Beep! Beep!! **TIME'S UP!!!**")
             else:
                 await get_user_input_time.edit(f"🤷🏻‍♂️ I can't countdown from {user_input_time}")
-                await get_user_input_time.unpin()
+                await get_user_input_time.unpin()"""
     except FloodWait as e:
         await asyncio.sleep(e.x)
-
 @bot.on_message(filters.command('stopc'))
 async def stop_timer(Client, message):
     global stoptimer
