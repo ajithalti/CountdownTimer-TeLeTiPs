@@ -136,6 +136,8 @@ async def set_timer(client, message):
         elif len(message.command)<3:
             return await message.reply('❌ **Incorrect format.**\n\n✅ Format should be like,\n<code> /set seconds "event"</code>\n\n**Example**:\n <code>/set 86400 "TIME LEFT UNTIL NEW YEAR"</code>')    
         else:
+            return await message.reply('❌ **Incorrect format.**\n\n✅ Format should be like,\n<code> /set seconds "event"</code>\n\n**Example**:\n <code>/set 86400 "TIME LEFT UNTIL NEW YEAR"</code>')    
+
             user_input_time = int(message.command[1])
             user_input_event = str(message.command[2])
             get_user_input_time = await bot.send_message(message.chat.id, user_input_time)
