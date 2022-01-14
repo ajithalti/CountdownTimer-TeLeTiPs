@@ -160,7 +160,7 @@ async def set_timer(client, message):
                 while user_input_time>0 and not stoptimer:
                     m=user_input_time%3600//60
                     s=user_input_time%60
-                    Countdown_TeLe_TiPs='{}\n\n⏳ <span style="font-size:20px">{:02d}m : {:02d}s*\n\n</span><i>"Your **Time** Is Limited, So Don\'t Waste It Living Someone Else\'s Life"</i>\n      - Steve Jobs'.format(user_input_event, m, s)
+                    Countdown_TeLe_TiPs='{}\n\n⏳ <span style="font-size:100px">{:02d}m : {:02d}s*\n\n</span><i>"Your **Time** Is Limited, So Don\'t Waste It Living Someone Else\'s Life"</i>\n      - Steve Jobs'.format(user_input_event, m, s)
                     finish_countdown = await get_user_input_time.edit(Countdown_TeLe_TiPs)
                     await asyncio.sleep(3)
                     user_input_time -=3
